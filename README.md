@@ -248,3 +248,115 @@ Software Engineer | Frontend Developer
 <p align="center">
   <b>Built with Angular 20 ❤️ by Code With Jamshed</b>
 </p>
+
+
+### Screenshots
+
+### login 
+
+<img width="1917" height="992" alt="login" src="https://github.com/user-attachments/assets/18288ad3-d30c-4009-8ccc-c1e1edcfbd4b" />
+
+### Command Center light Mode
+
+---
+
+<img width="1917" height="986" alt="Command Center light Mode" src="https://github.com/user-attachments/assets/aab5368b-2edb-429a-8792-7d362a0f82c8" />
+
+
+### Command Center
+
+---
+
+<img width="1917" height="992" alt="Command Center" src="https://github.com/user-attachments/assets/7c4c1e37-6ae2-478b-ad6d-43e2e92f5878" />
+
+### Catalog
+
+---
+
+
+<img width="1917" height="991" alt="Catalog" src="https://github.com/user-attachments/assets/b37e95dc-6111-4798-8fd2-5ee31cd6d0f5" />
+
+### Customers
+
+---
+
+
+<img width="1917" height="1046" alt="Customers" src="https://github.com/user-attachments/assets/7ce7661a-cd4c-4718-a996-630719779d9b" />
+
+### Orders
+
+---
+
+
+<img width="1917" height="987" alt="Orders" src="https://github.com/user-attachments/assets/f35351db-f9f8-4c74-b2db-48add4fb63ee" />
+
+### Fullfilment
+
+---
+
+
+<img width="1917" height="987" alt="Fullfilment" src="https://github.com/user-attachments/assets/0c6d76e7-f2f1-427d-b205-17418f59d144" />
+
+### Shipment
+
+---
+
+
+<img width="1917" height="987" alt="Shipment" src="https://github.com/user-attachments/assets/bbf0142a-c8b5-41c8-84df-ef7c27765b98" />
+
+### Returns
+
+---
+
+
+<img width="1917" height="987" alt="Returns" src="https://github.com/user-attachments/assets/677f5f11-ffb7-4e16-862d-c682cc6f77ca" />
+
+### Refund
+
+---
+
+
+<img width="1917" height="992" alt="Refund" src="https://github.com/user-attachments/assets/2e59a3c8-2ead-4250-b08e-56b701ee49dc" />
+
+### Promotions
+
+---
+
+
+<img width="1917" height="987" alt="Promotions" src="https://github.com/user-attachments/assets/d5c6a4fb-99ff-4a13-a6da-82bfc24bd038" />
+
+### Reviews
+
+---
+
+
+<img width="1917" height="990" alt="Reviews" src="https://github.com/user-attachments/assets/81e43c0d-5ffd-4006-8578-5fb313fb5bd5" />
+
+### Analytics
+
+---
+
+
+<img width="1917" height="987" alt="Analytics" src="https://github.com/user-attachments/assets/0c5a15ef-a8a4-483d-8a4f-ec2ebb3582a7" />
+
+### Notification
+
+---
+
+
+<img width="1917" height="980" alt="Notification" src="https://github.com/user-attachments/assets/202b9f75-ed09-407b-96ef-79b609da6299" />
+
+### Administration
+
+---
+
+
+<img width="1917" height="990" alt="Administration" src="https://github.com/user-attachments/assets/ecc1c5a9-2e3e-450f-8696-6fc24a26ce92" />
+
+### Setting
+
+---
+
+
+<img width="1917" height="987" alt="Setting" src="https://github.com/user-attachments/assets/99eed2e1-9302-460a-aada-7faf1b0a4c05" />
+
