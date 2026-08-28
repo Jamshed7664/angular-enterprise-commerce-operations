@@ -1,0 +1,179 @@
+<app-page-header
+  eyebrow="Marketing"
+  title="Promotions & coupons"
+  description="Control discount windows, usage and merchandising campaigns."
+>
+  <button
+    class="btn ghost"
+    type="button"
+    (click)="couponFormOpen.set(!couponFormOpen())"
+  >
+    + Coupon
+  </button>
+  <button
+    class="btn accent"
+    type="button"
+    (click)="promotionFormOpen.set(!promotionFormOpen())"
+  >
+    + Promotion
+  </button>
+</app-page-header>
+
+@if (promotionFormOpen()) {
+  <form
+    class="card marketing-form"
+    [formGroup]="promotionForm"
+    (ngSubmit)="createPromotion()"
+  >
+    <div class="form-head">
+      <div>
+        <small>NEW CAMPAIGN</small>
+        <h3>Create promotion</h3>
+      </div>
+      <button
+        class="icon-btn"
+        type="button"
+        (click)="promotionFormOpen.set(false)"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="form-grid">
+      <label>
+        Name
+        <input formControlName="name" />
+      </label>
+      <label>
+        Description
+        <input formControlName="description" />
+      </label>
+      <label>
+        Start date
+        <input type="date" formControlName="startDate" />
+      </label>
+      <label>
+        End date
+        <input type="date" formControlName="endDate" />
+      </label>
+    </div>
+
+    @if (promotionForm.hasError('dateRange')) {
+      <small class="error">End date must be after start date.</small>
+    }
+
+    <button class="btn accent" [disabled]="promotionForm.invalid">
+      Create promotion
+    </button>
+  </form>
+}
+
+@if (couponFormOpen()) {
+  <form
+    class="card marketing-form"
+    [formGroup]="couponForm"
+    (ngSubmit)="createCoupon()"
+  >
+    <div class="form-head">
+      <div>
+        <small>NEW DISCOUNT</small>
+        <h3>Create coupon</h3>
+      </div>
+      <button
+        class="icon-btn"
+        type="button"
+        (click)="couponFormOpen.set(false)"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="form-grid three">
+      <label>
+        Code
+        <input formControlName="code" placeholder="WELCOME20" />
+      </label>
+      <label>
+        Type
+        <select formControlName="type">
+          <option>Percentage</option>
+          <option>Fixed</option>
+        </select>
+      </label>
+      <label>
+        Value
+        <input type="number" formControlName="value" />
+      </label>
+      <label>
+        Minimum order
+        <input type="number" formControlName="minimumOrderValue" />
+      </label>
+      <label>
+        Start date
+        <input type="date" formControlName="startDate" />
+      </label>
+      <label>
+        End date
+        <input type="date" formControlName="endDate" />
+      </label>
+      <label>
+        Usage limit
+        <input type="number" formControlName="usageLimit" />
+      </label>
+    </div>
+
+    <label>
+      Description
+      <input formControlName="description" />
+    </label>
+
+    @if (couponForm.hasError('dateRange')) {
+      <small class="error">End date must be after start date.</small>
+    }
+    @if (couponForm.hasError('discountRange')) {
+      <small class="error">Percentage discount cannot exceed 100%.</small>
+    }
+
+    <button class="btn accent" [disabled]="couponForm.invalid">
+      Create coupon
+    </button>
+  </form>
+}
+
+<div class="promo-layout">
+  <section class="card">
+    <h3>Coupons</h3>
+    @for (coupon of coupons(); track coupon.id) {
+      <div class="coupon">
+        <span class="code">{{ coupon.code }}</span>
+        <div>
+          <b>{{ coupon.description }}</b>
+          <small>
+            {{ coupon.type }} · {{ coupon.value }}
+            {{ coupon.type === 'Percentage' ? '%' : ' USD' }} · Used
+            {{ coupon.usedCount }}/{{ coupon.usageLimit }}
+          </small>
+        </div>
+        <span [class.off]="!coupon.active">
+          {{ coupon.active ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+    }
+  </section>
+
+  <section class="card">
+    <h3>Promotions</h3>
+    @for (promotion of promotions(); track promotion.id) {
+      <div class="promotion">
+        <div>
+          <b>{{ promotion.name }}</b>
+          <small>
+            {{ promotion.startDate | date: 'mediumDate' }} →
+            {{ promotion.endDate | date: 'mediumDate' }}
+          </small>
+        </div>
+        <strong>{{ promotion.revenue | currency: 'USD' }}</strong>
+      </div>
+    }
+  </section>
+</div>

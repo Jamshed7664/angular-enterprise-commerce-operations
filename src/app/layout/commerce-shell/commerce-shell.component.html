@@ -1,0 +1,194 @@
+<div class="commerce-shell" [class.compact]="!railExpanded()">
+  <aside class="icon-rail">
+    <div class="rail-brand">
+      CWJ
+    </div>
+    <nav>
+      @for (item of nav; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" [title]="item.label">
+          <i [class]="item.icon">
+          </i>
+        </a>
+      }
+    </nav>
+    <button class="rail-logout" (click)="auth.logout()" aria-label="Logout">
+      <i class="fa-solid fa-arrow-right-from-bracket">
+      </i>
+    </button>
+  </aside>
+  <aside class="context-nav">
+    <div class="context-head">
+      <div>
+        <small>
+          COMMERCE OS
+        </small>
+        <strong>
+          Operations
+        </strong>
+      </div>
+      <button class="icon-btn" (click)="toggleContextNav()" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars">
+        </i>
+      </button>
+    </div>
+    <div class="context-copy">
+      <span class="pulse-dot">
+      </span>
+      <div>
+        <b>
+          Store online
+        </b>
+        <small>
+          All systems nominal
+        </small>
+      </div>
+    </div>
+    <nav class="context-links">
+      @for (item of nav; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active">
+          <i [class]="item.icon">
+          </i>
+          <span>
+            {{item.label}}
+          </span>
+        </a>
+      }
+    </nav>
+  </aside>
+  <section class="main-zone">
+    <header class="topbar">
+      <div class="command-search">
+        <i class="fa-solid fa-magnifying-glass">
+        </i>
+        <input
+          placeholder="Search orders, SKUs, customers..."
+          aria-label="Global search"
+          [value]="searchQuery()"
+          (input)="search($event)"
+          (focus)="searchOpen.set(searchResults().length > 0)"
+        />
+        <kbd>
+          ⌘ K
+        </kbd>
+
+        @if (searchOpen()) {
+          <div class="search-popover">
+            @if (searchResults().length === 0) {
+              <div class="search-empty">No matching commerce records.</div>
+            } @else {
+              @for (result of searchResults(); track result.type + result.id) {
+                <a [routerLink]="result.route" (click)="closeSearch()">
+                  <span class="search-type">{{ result.type }}</span>
+                  <span>
+                    <b>{{ result.title }}</b>
+                    <small>{{ result.subtitle }}</small>
+                  </span>
+                </a>
+              }
+            }
+          </div>
+        }
+      </div>
+      <div class="top-actions">
+        <a routerLink="/orders/new" class="quick-create">
+          <i class="fa-solid fa-plus">
+          </i>
+          <span>
+            New order
+          </span>
+        </a>
+        <button class="icon-btn" (click)="theme.toggle()" aria-label="Toggle theme">
+          <i [class]="theme.resolvedMode() === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'">
+          </i>
+        </button>
+        <div class="popover-wrap">
+          <button class="icon-btn" (click)="toggleNotifications()" aria-label="Notifications">
+            <i class="fa-regular fa-bell">
+            </i>
+            @if (unreadCount() > 0) {
+              <span class="count">
+                {{unreadCount()}}
+              </span>
+            }
+          </button>
+          @if (notificationsOpen()) {
+            <div class="popover notifications-popover">
+              <div class="popover-head">
+                <strong>
+                  Operations alerts
+                </strong>
+                <small>
+                  {{unreadCount()}}
+                  unread
+                </small>
+              </div>
+              @for (item of notifications(); track item.id) {
+                <button class="notification-row" [class.unread]="!item.read" (click)="markRead(item)">
+                  <span class="notification-icon">
+                    <i class="fa-solid fa-bolt">
+                    </i>
+                  </span>
+                  <span>
+                    <b>
+                      {{item.title}}
+                    </b>
+                    <small>
+                      {{item.message}}
+                    </small>
+                  </span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+        <div class="popover-wrap">
+          <button class="profile-trigger" (click)="toggleProfile()">
+            <span class="avatar">
+              {{initials()}}
+            </span>
+            <span class="profile-copy">
+              <b>
+                {{auth.user()?.name}}
+              </b>
+              <small>
+                {{auth.user()?.role}}
+              </small>
+            </span>
+            <i class="fa-solid fa-chevron-down">
+            </i>
+          </button>
+          @if (profileOpen()) {
+            <div class="popover profile-popover">
+              <div class="profile-summary">
+                <span class="avatar large">
+                  {{initials()}}
+                </span>
+                <div>
+                  <b>
+                    {{auth.user()?.name}}
+                  </b>
+                  <small>
+                    {{auth.user()?.email}}
+                  </small>
+                </div>
+              </div>
+              <a routerLink="/settings">
+                <i class="fa-solid fa-sliders">
+                </i>
+                Settings
+              </a>
+              <button (click)="auth.logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket">
+                </i>
+                Logout
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+    <main class="content">
+      <router-outlet />
+    </main>
+  </section>
+</div>

@@ -1,0 +1,132 @@
+<app-page-header eyebrow="Catalog" title="Products & merchandising" description="Manage SKUs, variants, pricing, collections and publish state.">
+  <a routerLink="categories" class="btn ghost">
+    Categories
+  </a>
+  <a routerLink="collections" class="btn ghost">
+    Collections
+  </a>
+  <a routerLink="pricing" class="btn ghost">
+    Pricing
+  </a>
+  <a routerLink="new" class="btn accent">
+    <i class="fa-solid fa-plus">
+    </i>
+    Add product
+  </a>
+</app-page-header>
+<div class="toolbar card compact-card">
+  <div class="search-field">
+    <i class="fa-solid fa-magnifying-glass">
+    </i>
+    <input placeholder="Search product, SKU or brand" [value]="search()" (input)="updateSearch($event)" />
+  </div>
+  <div class="view-switch">
+    <button [class.active]="view() === 'grid'" (click)="view.set('grid')">
+      <i class="fa-solid fa-grip">
+      </i>
+    </button>
+    <button [class.active]="view() === 'table'" (click)="view.set('table')">
+      <i class="fa-solid fa-list">
+      </i>
+    </button>
+  </div>
+</div>
+@if (view() === 'grid') {
+  <div class="product-grid">
+    @for (product of filtered(); track product.id) {
+      <a class="product-card" [routerLink]="[product.id]">
+        <div class="image-wrap">
+          <app-product-image [src]="product.imageUrl" [alt]="product.title" size="lg" />
+        </div>
+        <div class="product-card-body">
+          <div class="meta">
+            <span>
+              {{product.brand}}
+            </span>
+            <app-status-chip [status]="product.status" />
+          </div>
+          <h3>
+            {{product.title}}
+          </h3>
+          <p>
+            {{product.shortDescription}}
+          </p>
+          <div class="price-row">
+            <b>
+              {{product.basePrice | currency:'USD'}}
+            </b>
+            <small>
+              {{product.sku}}
+            </small>
+          </div>
+          <div class="variant-summary">
+            <span>
+              {{product.variants.length}}
+              variants
+            </span>
+            <span>
+              {{product.variants[0].inventory}}
+              units
+            </span>
+          </div>
+        </div>
+      </a>
+    }
+  </div>
+}
+@else {
+  <div class="data-grid card">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Product
+          </th>
+          <th>
+            SKU
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Inventory
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of filtered(); track product.id) {
+          <tr [routerLink]="[product.id]">
+            <td>
+              <div class="product-cell">
+                <app-product-image [src]="product.imageUrl" [alt]="product.title" size="sm" />
+                <div>
+                  <b>
+                    {{product.title}}
+                  </b>
+                  <small>
+                    {{product.brand}}
+                  </small>
+                </div>
+              </div>
+            </td>
+            <td>
+              {{product.sku}}
+            </td>
+            <td>
+              <app-status-chip [status]="product.status" />
+            </td>
+            <td>
+              {{product.basePrice | currency:'USD'}}
+            </td>
+            <td>
+              {{product.variants[0].inventory}}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

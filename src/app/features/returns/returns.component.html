@@ -1,0 +1,42 @@
+<app-page-header eyebrow="Reverse Logistics" title="Returns" description="Approve, inspect and resolve eligible delivered merchandise."/>
+<div class="return-grid">
+  @for(r of items();track r.id){
+    <article class="card">
+      <div class="return-head">
+        <div>
+          <small>
+            RETURN #
+            {{r.id}}
+          </small>
+          <h3>
+            Order #
+            {{r.orderId}}
+          </h3>
+        </div>
+        <app-status-chip [status]="r.status"/>
+      </div>
+      <p>
+        {{r.reason}}
+      </p>
+      <div class="resolution">
+        <span>
+          Resolution
+        </span>
+        <b>
+          {{r.resolution}}
+        </b>
+      </div>
+      <div class="resolution">
+        <span>
+          Amount
+        </span>
+        <b>
+          {{r.amount|currency:'USD'}}
+        </b>
+      </div>
+      <a [routerLink]="['/orders',r.orderId]" class="btn secondary full">
+        Open order workspace
+      </a>
+    </article>
+  }
+</div>

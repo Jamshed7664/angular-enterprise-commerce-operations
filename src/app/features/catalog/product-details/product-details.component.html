@@ -1,0 +1,131 @@
+@if(product(); as item){
+  <div class="detail-head">
+    <a routerLink="/catalog" class="back">
+      ← Catalog
+    </a>
+    <a [routerLink]="['edit']" class="btn accent">
+      Edit product
+    </a>
+  </div>
+  <section class="product-hero card">
+    <app-product-image [src]="item.imageUrl" [alt]="item.title" size="lg" />
+    <div class="hero-copy">
+      <div class="chips">
+        <app-status-chip [status]="item.status" />
+        <span>
+          {{item.brand}}
+        </span>
+      </div>
+      <h1>
+        {{item.title}}
+      </h1>
+      <p>
+        {{item.description}}
+      </p>
+      <div class="big-price">
+        {{item.basePrice|currency:'USD'}}
+      </div>
+    </div>
+    <div class="commerce-stats">
+      <div>
+        <small>
+          SKU
+        </small>
+        <b>
+          {{item.sku}}
+        </b>
+      </div>
+      <div>
+        <small>
+          Variants
+        </small>
+        <b>
+          {{item.variants.length}}
+        </b>
+      </div>
+      <div>
+        <small>
+          Gross margin
+        </small>
+        <b>
+          {{((item.basePrice-item.cost)/item.basePrice*100) | number:'1.0-0'}}
+          %
+        </b>
+      </div>
+    </div>
+  </section>
+  <div class="details-grid">
+    <section class="card">
+      <h3>
+        Variants
+      </h3>
+      <div class="data-grid">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                SKU
+              </th>
+              <th>
+                Option
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Inventory
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(v of item.variants;track v.id){
+              <tr>
+                <td>
+                  {{v.sku}}
+                </td>
+                <td>
+                  {{v.options}}
+                </td>
+                <td>
+                  {{v.price|currency:'USD'}}
+                </td>
+                <td>
+                  {{v.inventory}}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="card">
+      <h3>
+        Merchandising
+      </h3>
+      <div class="property">
+        <span>
+          Tags
+        </span>
+        <b>
+          {{item.tags.join(', ') || '—'}}
+        </b>
+      </div>
+      <div class="property">
+        <span>
+          Compare at
+        </span>
+        <b>
+          {{item.compareAtPrice|currency:'USD'}}
+        </b>
+      </div>
+      <div class="property">
+        <span>
+          Cost
+        </span>
+        <b>
+          {{item.cost|currency:'USD'}}
+        </b>
+      </div>
+    </section>
+  </div>
+}

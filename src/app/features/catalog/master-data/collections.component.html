@@ -1,0 +1,23 @@
+<app-page-header
+  eyebrow="Catalog"
+  title="Collections"
+  description="Curated and rule-based merchandising groups."
+/>
+
+<div class="collection-grid">
+  @for (collection of collections(); track collection.id) {
+    <article class="card" [class.highlight]="collection.featured">
+      @if (collection.featured) {
+        <small>FEATURED</small>
+      }
+      <h2>{{ collection.name }}</h2>
+      <p>{{ collection.productIds.length }} products · manual collection</p>
+    </article>
+  }
+
+  <article class="card dashed">
+    <i class="fa-solid fa-plus"></i>
+    <h3>Create collection</h3>
+    <p>Rule-based collection UI is a v1 placeholder.</p>
+  </article>
+</div>

@@ -1,0 +1,32 @@
+.product-image {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  aspect-ratio: 1;
+}
+.product-image.sm {
+  width: 42px;
+}
+.product-image.md {
+  width: 64px;
+}
+.product-image.lg {
+  width: 148px;
+}
+img,
+.fallback {
+  width: 100%;
+  height: 100%;
+}
+img {
+  display: block;
+  object-fit: cover;
+}
+.fallback {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(49, 46, 129, 0.12), rgba(219, 39, 119, 0.1));
+  color: var(--primary);
+  font-size: 1.25rem;
+}

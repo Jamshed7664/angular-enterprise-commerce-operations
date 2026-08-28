@@ -1,0 +1,57 @@
+<app-page-header
+  eyebrow="Administration"
+  title="Access & audit"
+  description="Commerce roles, permissions and operational audit history."
+/>
+
+<div class="admin-grid">
+  <section class="card">
+    <h3>Role / permission matrix</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Admin</th>
+          <th>Catalog</th>
+          <th>Orders</th>
+          <th>Support</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of permissionRows; track row) {
+          <tr>
+            <td>{{ row }}</td>
+            <td>✓</td>
+            <td>{{ row === 'Catalog' ? '✓' : '—' }}</td>
+            <td>{{ row === 'Orders' || row === 'Fulfillment' ? '✓' : '—' }}</td>
+            <td>{{ row === 'Customers' || row === 'Returns' ? '✓' : '—' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <h3>Users</h3>
+    @for (user of users(); track user.id) {
+      <div class="audit">
+        <span></span>
+        <div>
+          <b>{{ user.name }}</b>
+          <small>{{ user.email }} · {{ user.role }}</small>
+        </div>
+      </div>
+    }
+  </section>
+
+  <section class="card">
+    <h3>Audit log</h3>
+    @for (log of logs(); track log.id) {
+      <div class="audit">
+        <span></span>
+        <div>
+          <b>{{ log.event }}</b>
+          <small>{{ log.createdAt | date: 'medium' }}</small>
+        </div>
+      </div>
+    }
+  </section>
+</div>

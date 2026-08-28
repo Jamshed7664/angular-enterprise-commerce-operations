@@ -1,0 +1,35 @@
+.page-header {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:22px;
+}
+small {
+  color:var(--accent);
+  font-weight:800;
+  letter-spacing:.14em;
+  font-size:10px;
+  text-transform:uppercase;
+}
+h1 {
+  margin:5px 0 3px;
+  font-size:clamp(1.75rem,3vw,2.45rem);
+  letter-spacing:-.04em;
+}
+p {
+  margin:0;
+  color:var(--muted);
+  max-width:720px;
+}
+.actions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+@media (max-width:760px) {
+  .page-header {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}

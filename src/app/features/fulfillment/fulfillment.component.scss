@@ -1,0 +1,42 @@
+.ops-cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
+.op-head {
+  display:flex;
+  justify-content:space-between;
+  gap:10px
+}
+.op-head small {
+  color:var(--accent);
+  font-size:9px;
+  font-weight:900
+}
+.op-head h3 {
+  margin:5px 0
+}
+.op-meta {
+  display:flex;
+  gap:8px;
+  margin:18px 0
+}
+.op-meta span {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  padding:10px;
+  border-radius:10px;
+  background:var(--surface-2);
+  color:var(--muted);
+  font-size:10px
+}
+.op-meta b {
+  color:var(--text);
+  font-size:12px
+}
+@media(max-width:850px) {
+  .ops-cards {
+    grid-template-columns:1fr
+  }
+}

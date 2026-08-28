@@ -1,0 +1,100 @@
+@if(customer();as c){
+  <a routerLink="/customers" class="back">
+    ← Customers
+  </a>
+  <section class="customer-hero card">
+    <span class="avatar-xl">
+      {{c.name.charAt(0)}}
+    </span>
+    <div>
+      <small>
+        CUSTOMER 360
+      </small>
+      <h1>
+        {{c.name}}
+      </h1>
+      <p>
+        {{c.email}}
+        ·
+        {{c.phone}}
+      </p>
+      <app-status-chip [status]="c.status" />
+    </div>
+    <div class="customer-metrics">
+      <div>
+        <small>
+          LTV
+        </small>
+        <b>
+          {{c.lifetimeValue|currency:'USD'}}
+        </b>
+      </div>
+      <div>
+        <small>
+          Orders
+        </small>
+        <b>
+          {{c.totalOrders}}
+        </b>
+      </div>
+      <div>
+        <small>
+          AOV
+        </small>
+        <b>
+          {{c.averageOrderValue|currency:'USD'}}
+        </b>
+      </div>
+    </div>
+  </section>
+  <div class="three-grid">
+    <section class="card span-2">
+      <h3>
+        Order history
+      </h3>
+      @for(order of orders();track order.id){
+        <a class="order-link" [routerLink]="['/orders',order.id]">
+          <div>
+            <b>
+              {{order.orderNumber}}
+            </b>
+            <small>
+              {{order.createdAt|date:'mediumDate'}}
+            </small>
+          </div>
+          <b>
+            {{order.grandTotal|currency:'USD'}}
+          </b>
+          <app-status-chip [status]="order.status" />
+        </a>
+      }
+    </section>
+    <section class="card">
+      <h3>
+        Addresses
+      </h3>
+      @for(a of c.addresses;track a.id){
+        <div class="address">
+          <b>
+            {{a.label}}
+          </b>
+          <span>
+            {{a.line1}}
+          </span>
+          <span>
+            {{a.city}}
+            ,
+            {{a.state}}
+            {{a.postalCode}}
+          </span>
+        </div>
+      }
+      <h3>
+        Notes
+      </h3>
+      <p>
+        {{c.notes}}
+      </p>
+    </section>
+  </div>
+}

@@ -1,0 +1,125 @@
+<app-page-header eyebrow="Catalog" [title]="id ? 'Edit product' : 'Create product'" description="Maintain merchandising, pricing, variants and local image assets." />
+<form class="form-layout" [formGroup]="form" (ngSubmit)="save()">
+  <section class="card form-main">
+    <h3>
+      Product information
+    </h3>
+    <div class="form-grid two">
+      <label>
+        SKU
+        <input formControlName="sku" />
+        @if(form.controls.sku.hasError('duplicate')){
+          <small class="error">
+            SKU must be unique.
+          </small>
+        }
+      </label>
+      <label>
+        Status
+        <select formControlName="status">
+          <option>
+            Draft
+          </option>
+          <option>
+            Active
+          </option>
+          <option>
+            Archived
+          </option>
+        </select>
+      </label>
+    </div>
+    <label>
+      Product title
+      <input formControlName="title" />
+    </label>
+    <div class="form-grid two">
+      <label>
+        Brand
+        <input formControlName="brand" />
+      </label>
+      <label>
+        Category
+        <select formControlName="categoryId">
+          @for(category of categories();track category.id){
+            <option [value]="category.id">
+              {{category.name}}
+            </option>
+          }
+        </select>
+      </label>
+    </div>
+    <label>
+      Short description
+      <textarea rows="2" formControlName="shortDescription">
+      </textarea>
+    </label>
+    <label>
+      Long description
+      <textarea rows="5" formControlName="description">
+      </textarea>
+    </label>
+    <label>
+      Image URL / local asset
+      <input formControlName="imageUrl" />
+      <small>
+        Recommended: /assets/images/products/your-image.svg
+      </small>
+    </label>
+    <div class="section-title">
+      <div>
+        <h3>
+          Variants
+        </h3>
+        <small>
+          Size, color or merchandising variants.
+        </small>
+      </div>
+      <button type="button" class="btn secondary" (click)="addVariant()">
+        + Add variant
+      </button>
+    </div>
+    <div formArrayName="variants" class="variant-list">
+      @for (variant of variants.controls; track $index) {
+        <div class="variant-row" [formGroupName]="$index">
+          <input formControlName="sku" placeholder="Variant SKU" />
+          <input formControlName="name" placeholder="Name" />
+          <input formControlName="options" placeholder="Options" />
+          <input type="number" formControlName="price" placeholder="Price" />
+          <input type="number" formControlName="inventory" placeholder="Inventory" />
+          <button type="button" class="icon-btn danger" (click)="removeVariant($index)">
+            <i class="fa-solid fa-trash">
+            </i>
+          </button>
+        </div>
+      }
+    </div>
+  </section>
+  <aside class="form-side">
+    <section class="card">
+      <h3>
+        Pricing
+      </h3>
+      <label>
+        Base price
+        <input type="number" formControlName="basePrice" />
+      </label>
+      <label>
+        Compare-at price
+        <input type="number" formControlName="compareAtPrice" />
+      </label>
+      <label>
+        Cost
+        <input type="number" formControlName="cost" />
+      </label>
+    </section>
+    <section class="card action-card">
+      <button class="btn accent full" type="submit" [disabled]="form.invalid">
+        Save product
+      </button>
+      <a routerLink="/catalog" class="btn ghost full">
+        Cancel
+      </a>
+    </section>
+  </aside>
+</form>

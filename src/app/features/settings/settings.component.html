@@ -1,0 +1,64 @@
+<app-page-header eyebrow="Settings" title="Store & preferences" description="Store identity, currency, shipping, appearance and notification preferences."/>
+<div class="settings-grid">
+  @if(settings();as s){
+    <section class="card form-card">
+      <h3>
+        Store
+      </h3>
+      <label>
+        Store name
+        <input [(ngModel)]="s.storeName"/>
+      </label>
+      <label>
+        Currency
+        <select [(ngModel)]="s.currency">
+          <option>
+            USD
+          </option>
+          <option>
+            INR
+          </option>
+          <option>
+            EUR
+          </option>
+        </select>
+      </label>
+      <label>
+        Order prefix
+        <input [(ngModel)]="s.orderPrefix"/>
+      </label>
+      <button class="btn accent" (click)="save(s)">
+        Save store settings
+      </button>
+    </section>
+    <section class="card">
+      <h3>
+        Appearance
+      </h3>
+      <div class="theme-options">
+        @for(mode of modes;track mode){
+          <button [class.active]="theme.mode()===mode" (click)="setTheme(mode)">
+            <i [class]="mode==='light'?'fa-solid fa-sun':mode==='dark'?'fa-solid fa-moon':'fa-solid fa-display'">
+            </i>
+            <b>
+              {{mode}}
+            </b>
+          </button>
+        }
+      </div>
+      <h3>
+        Shipping methods
+      </h3>
+      @for(method of s.shippingMethods;track method){
+        <div class="setting-row">
+          <span>
+            {{method}}
+          </span>
+          <b>
+            Enabled
+          </b>
+        </div>
+      }
+    </section>
+  }
+</div>

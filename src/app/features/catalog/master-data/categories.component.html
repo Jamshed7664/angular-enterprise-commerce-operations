@@ -1,0 +1,18 @@
+<app-page-header eyebrow="Catalog" title="Categories" description="Organize the product catalog into customer-friendly merchandising groups."/>
+<div class="master-grid">
+  @for(c of categories();track c.id){
+    <article class="card">
+      <span class="category-icon">
+        <i class="fa-solid fa-folder-tree">
+        </i>
+      </span>
+      <h3>
+        {{c.name}}
+      </h3>
+      <p>
+        Status:
+        {{c.status}}
+      </p>
+    </article>
+  }
+</div>

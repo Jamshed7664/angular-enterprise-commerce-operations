@@ -1,0 +1,164 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import 'bootstrap/dist/css/bootstrap-grid.min.css';
+:root {
+  --font: 'Century Gothic', 'Avenir Next', 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --primary: #312e81;
+  --primary-2: #4338ca;
+  --success: #84cc16;
+  --accent: #db2777;
+  --canvas: #f0f9ff;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --text: #17172b;
+  --muted: #64748b;
+  --border: #dbe6f0;
+  --shadow: 0 8px 24px rgba(49, 46, 129, 0.06);
+  --shadow-lg: 0 22px 60px rgba(15, 23, 42, 0.18);
+}
+html.dark {
+  --canvas: #0b1020;
+  --surface: #111827;
+  --surface-2: #172033;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #26334b;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.4);
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  font-family: var(--font);
+  background: var(--canvas);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select {
+  font: inherit;
+}
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--success) 55%, transparent);
+  outline-offset: 2px;
+}
+h1, h2, h3, h4, p {
+  overflow-wrap: anywhere;
+}
+h1, h2, h3 {
+  letter-spacing: -0.025em;
+}
+.card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.compact-card {
+  padding: 12px;
+}
+.btn {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0 14px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+.btn.primary {
+  background: var(--primary);
+  color: white;
+}
+.btn.accent {
+  background: linear-gradient(135deg, var(--accent), #ec4899);
+  color: white;
+}
+.btn.success {
+  background: #65a30d;
+  color: white;
+}
+.btn.secondary {
+  border-color: var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.btn.ghost {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--muted);
+}
+.btn.danger {
+  background: #dc2626;
+  color: white;
+}
+.btn.full {
+  width: 100%;
+}
+.icon-btn.danger {
+  color: #ef4444;
+}
+.data-grid {
+  overflow: auto;
+  padding: 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 11px 13px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: left;
+}
+td {
+  padding: 12px 13px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+}
+tbody tr:hover {
+  background: color-mix(in srgb, var(--surface-2) 82%, var(--primary) 3%);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+@media (max-width: 760px) {
+  .card {
+    padding: 14px;
+  }
+  .btn {
+    min-height: 38px;
+  }
+}

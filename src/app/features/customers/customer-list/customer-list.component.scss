@@ -1,0 +1,26 @@
+.customer {
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.customer>span {
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+  font-weight:900;
+  font-size:10px
+}
+.customer div {
+  display:flex;
+  flex-direction:column
+}
+.customer small {
+  color:var(--muted)
+}
+tr {
+  cursor:pointer
+}

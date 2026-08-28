@@ -1,0 +1,50 @@
+.order-form {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 330px;
+  gap:14px
+}
+.order-form>.card {
+  display:grid;
+  gap:13px;
+  align-content:start
+}
+label {
+  display:grid;
+  gap:6px;
+  font-size:11px;
+  font-weight:800
+}
+input,select,textarea {
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--surface-2);
+  color:var(--text);
+  padding:10px 12px
+}
+.section-title {
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.line-editor {
+  display:grid;
+  gap:8px
+}
+.line-row {
+  display:grid;
+  grid-template-columns:1fr 90px 40px;
+  gap:8px
+}
+.summary {
+  position:sticky;
+  top:90px
+}
+@media(max-width:850px) {
+  .order-form {
+    grid-template-columns:1fr
+  }
+  .summary {
+    position:static
+  }
+}

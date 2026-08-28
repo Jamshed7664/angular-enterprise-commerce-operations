@@ -1,0 +1,216 @@
+@if(order();as o){
+  <div class="order-title">
+    <div>
+      <a routerLink="/orders">
+        ← Orders
+      </a>
+      <div class="title-row">
+        <h1>
+          {{o.orderNumber}}
+        </h1>
+        <app-status-chip [status]="o.status" />
+      </div>
+      <p>
+        {{o.createdAt|date:'medium'}}
+        ·
+        {{o.lines.length}}
+        line items ·
+        {{o.grandTotal|currency:'USD'}}
+      </p>
+    </div>
+    <div class="status-cluster">
+      <div>
+        <small>
+          PAYMENT
+        </small>
+        <app-status-chip [status]="o.paymentStatus" />
+      </div>
+      <div>
+        <small>
+          FULFILLMENT
+        </small>
+        <app-status-chip [status]="o.fulfillmentStatus" />
+      </div>
+      <div>
+        <small>
+          SHIPMENT
+        </small>
+        <app-status-chip [status]="o.shipmentStatus" />
+      </div>
+    </div>
+  </div>
+  <div class="order-workspace">
+    <section class="main-column">
+      <article class="card">
+        <div class="section-head">
+          <h3>
+            Line items
+          </h3>
+          <b>
+            {{o.subtotal|currency:'USD'}}
+          </b>
+        </div>
+        @for(line of o.lines;track line.id){
+          <div class="line-item">
+            <app-product-image [src]="line.imageUrl" [alt]="line.title" size="md" />
+            <div class="line-copy">
+              <b>
+                {{line.title}}
+              </b>
+              <small>
+                {{line.sku}}
+                · Qty
+                {{line.quantity}}
+              </small>
+            </div>
+            <div>
+              {{line.unitPrice|currency:'USD'}}
+            </div>
+            <div>
+              <small>
+                Fulfilled
+              </small>
+              <b>
+                {{line.fulfilledQuantity}}
+                /
+                {{line.quantity}}
+              </b>
+            </div>
+          </div>
+        }
+      </article>
+      <div class="two-col">
+        <article class="card">
+          <h3>
+            Pricing
+          </h3>
+          <div class="money-row">
+            <span>
+              Subtotal
+            </span>
+            <b>
+              {{o.subtotal|currency:'USD'}}
+            </b>
+          </div>
+          <div class="money-row">
+            <span>
+              Shipping
+            </span>
+            <b>
+              {{o.shippingFee|currency:'USD'}}
+            </b>
+          </div>
+          <div class="money-row">
+            <span>
+              Discount
+            </span>
+            <b>
+              -
+              {{o.discountTotal|currency:'USD'}}
+            </b>
+          </div>
+          <div class="money-row total">
+            <span>
+              Grand total
+            </span>
+            <b>
+              {{o.grandTotal|currency:'USD'}}
+            </b>
+          </div>
+        </article>
+        <article class="card">
+          <h3>
+            Shipping address
+          </h3>
+          <p>
+            {{o.shippingAddress.line1}}
+            <br/>
+            {{o.shippingAddress.city}}
+            ,
+            {{o.shippingAddress.state}}
+            {{o.shippingAddress.postalCode}}
+            <br/>
+            {{o.shippingAddress.country}}
+          </p>
+          <h3>
+            Internal note
+          </h3>
+          <p>
+            {{o.internalNotes||'No internal notes.'}}
+          </p>
+        </article>
+      </div>
+    </section>
+    <aside class="operations-column">
+      <article class="card sticky-actions">
+        <small>
+          OPERATIONS
+        </small>
+        <h3>
+          Move this order forward
+        </h3>
+        <div class="action-list">
+        @if (o.status === 'Draft') {
+          <a class="btn ghost full" [routerLink]="['edit']">Edit draft order</a>
+        }
+          <button class="btn primary full" (click)="confirm()" [disabled]="o.status!=='Draft'">
+            Confirm order
+          </button>
+          <button class="btn success full" (click)="markPaid()" [disabled]="o.paymentStatus==='Paid'||o.status==='Cancelled'">
+            Mark paid
+          </button>
+          <button class="btn secondary full" (click)="startFulfillment()" [disabled]="o.paymentStatus!=='Paid'||o.status==='Cancelled'">
+            Start picking
+          </button>
+          <button class="btn secondary full" (click)="pack()" [disabled]="fulfillment()?.status!=='Picking'">
+            Mark packed
+          </button>
+          <button class="btn secondary full" (click)="createShipment()" [disabled]="fulfillment()?.status!=='Packed'||!!shipment()">
+            Create shipment
+          </button>
+          <button class="btn secondary full" (click)="markShipped()" [disabled]="shipment()?.status!=='Ready to Ship'">
+            Mark shipped
+          </button>
+          <button class="btn success full" (click)="markDelivered()" [disabled]="shipment()?.status!=='Shipped'">
+            Mark delivered
+          </button>
+          <button class="btn ghost full" (click)="createReturn()" [disabled]="o.shipmentStatus!=='Delivered'||returns().length>0">
+            Create return
+          </button>
+          @if(returns()[0];as r){
+            <button class="btn ghost full" (click)="resolveReturn()" [disabled]="r.status==='Resolved'">
+              Inspect & resolve return
+            </button>
+          }
+          <button class="btn accent full" (click)="processRefund()" [disabled]="returns()[0]?.status!=='Resolved'">
+            Process refund
+          </button>
+          <button class="btn danger full" (click)="cancel()" [disabled]="o.status==='Cancelled'||o.fulfillmentStatus==='Fulfilled'">
+            Cancel order
+          </button>
+        </div>
+      </article>
+      <article class="card timeline-card">
+        <small>
+          ORDER TIMELINE
+        </small>
+        <div class="timeline">
+          @for(entry of activity();track entry.id){
+            <div class="timeline-row">
+              <span>
+              </span>
+              <div>
+                <b>
+                  {{entry.message}}
+                </b>
+                <small>
+                  {{entry.createdAt|date:'medium'}}
+                </small>
+              </div>
+            </div>
+          }
+        </div>
+      </article>
+    </aside>
+  </div>
+}

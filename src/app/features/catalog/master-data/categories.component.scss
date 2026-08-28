@@ -1,0 +1,22 @@
+.master-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+.category-icon {
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:rgba(49,46,129,.1);
+  color:var(--primary)
+}
+.card p {
+  color:var(--muted)
+}
+@media(max-width:800px) {
+  .master-grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+}

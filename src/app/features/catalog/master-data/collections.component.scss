@@ -1,0 +1,36 @@
+.collection-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
+.highlight {
+  background:linear-gradient(135deg,var(--primary),#4338ca);
+  color:white
+}
+.card small {
+  color:var(--accent);
+  font-weight:900;
+  letter-spacing:.1em
+}
+.highlight small {
+  color:#bef264
+}
+.card p {
+  color:var(--muted)
+}
+.highlight p {
+  color:#c7d2fe
+}
+.dashed {
+  border-style:dashed;
+  text-align:center
+}
+.dashed i {
+  font-size:1.5rem;
+  color:var(--accent)
+}
+@media(max-width:800px) {
+  .collection-grid {
+    grid-template-columns:1fr
+  }
+}

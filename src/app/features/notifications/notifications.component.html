@@ -1,0 +1,22 @@
+<app-page-header eyebrow="Operations Queue" title="Notifications & alerts" description="Payment failures, late fulfillment, shipment exceptions, returns and refund actions."/>
+<div class="notification-page">
+  @for(n of items();track n.id){
+    <button class="card notification" [class.unread]="!n.read" (click)="read(n)">
+      <span class="type-icon">
+        <i class="fa-solid fa-bolt">
+        </i>
+      </span>
+      <span>
+        <b>
+          {{n.title}}
+        </b>
+        <small>
+          {{n.message}}
+        </small>
+      </span>
+      <time>
+        {{n.createdAt|date:'short'}}
+      </time>
+    </button>
+  }
+</div>

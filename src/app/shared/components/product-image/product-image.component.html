@@ -1,0 +1,11 @@
+<div class="product-image" [class]="'product-image ' + size">
+  @if (!failed() && src) {
+    <img [src]="src" [alt]="alt" loading="lazy" (error)="onError()" />
+  }
+  @else {
+    <div class="fallback" role="img" [attr.aria-label]="alt">
+      <i class="fa-solid fa-bag-shopping">
+      </i>
+    </div>
+  }
+</div>

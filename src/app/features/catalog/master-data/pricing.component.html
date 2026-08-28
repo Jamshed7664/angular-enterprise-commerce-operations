@@ -1,0 +1,56 @@
+<app-page-header eyebrow="Pricing" title="Margin & price control" description="Review base price, compare-at price and gross margin before promotion planning."/>
+<div class="card data-grid">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          SKU
+        </th>
+        <th>
+          Product
+        </th>
+        <th>
+          Cost
+        </th>
+        <th>
+          Price
+        </th>
+        <th>
+          Compare at
+        </th>
+        <th>
+          Margin
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(p of products();track p.id){
+        <tr>
+          <td>
+            {{p.sku}}
+          </td>
+          <td>
+            <b>
+              {{p.title}}
+            </b>
+          </td>
+          <td>
+            {{p.cost|currency:'USD'}}
+          </td>
+          <td>
+            {{p.basePrice|currency:'USD'}}
+          </td>
+          <td>
+            {{p.compareAtPrice|currency:'USD'}}
+          </td>
+          <td>
+            <b>
+              {{((p.basePrice-p.cost)/p.basePrice*100)|number:'1.0-0'}}
+              %
+            </b>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

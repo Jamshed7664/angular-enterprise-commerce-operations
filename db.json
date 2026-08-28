@@ -1,0 +1,756 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jamshed Ahmad",
+      "email": "admin@commerce.dev",
+      "role": "Commerce Admin",
+      "password": "password"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "sku": "AUR-HEAD-01",
+      "title": "Aurora Pro Headphones",
+      "shortDescription": "Spatial wireless audio with all-day comfort.",
+      "description": "Premium over-ear headphones designed for focused work and travel.",
+      "categoryId": 1,
+      "collectionIds": [
+        1
+      ],
+      "brand": "Aurora",
+      "tags": [
+        "audio",
+        "featured"
+      ],
+      "status": "Active",
+      "basePrice": 249,
+      "compareAtPrice": 299,
+      "cost": 118,
+      "imageUrl": "/assets/images/products/headphones.svg",
+      "variants": [
+        {
+          "id": 101,
+          "sku": "AUR-HEAD-BLK",
+          "name": "Midnight",
+          "options": "Black",
+          "price": 249,
+          "status": "Active",
+          "inventory": 86
+        },
+        {
+          "id": 102,
+          "sku": "AUR-HEAD-WHT",
+          "name": "Cloud",
+          "options": "White",
+          "price": 249,
+          "status": "Active",
+          "inventory": 42
+        }
+      ],
+      "createdAt": "2026-07-01T10:00:00Z",
+      "updatedAt": "2026-08-27T09:00:00Z"
+    },
+    {
+      "id": 2,
+      "sku": "NOVA-WATCH-01",
+      "title": "Nova Health Watch",
+      "shortDescription": "Performance watch with wellness and recovery insights.",
+      "description": "A slim health and fitness watch with modern activity tracking.",
+      "categoryId": 2,
+      "collectionIds": [
+        1
+      ],
+      "brand": "Nova",
+      "tags": [
+        "wearable"
+      ],
+      "status": "Active",
+      "basePrice": 329,
+      "compareAtPrice": 379,
+      "cost": 144,
+      "imageUrl": "/assets/images/products/watch.svg",
+      "variants": [
+        {
+          "id": 201,
+          "sku": "NOVA-WATCH-44",
+          "name": "44mm",
+          "options": "Graphite",
+          "price": 329,
+          "status": "Active",
+          "inventory": 61
+        }
+      ],
+      "createdAt": "2026-07-05T10:00:00Z",
+      "updatedAt": "2026-08-25T09:00:00Z"
+    },
+    {
+      "id": 3,
+      "sku": "EMBER-BAG-01",
+      "title": "Ember Transit Backpack",
+      "shortDescription": "Urban technical pack for devices, travel and daily carry.",
+      "description": "Weather-ready backpack with padded laptop organization and travel compartments.",
+      "categoryId": 3,
+      "collectionIds": [
+        2
+      ],
+      "brand": "Ember",
+      "tags": [
+        "travel",
+        "bags"
+      ],
+      "status": "Active",
+      "basePrice": 129,
+      "compareAtPrice": 149,
+      "cost": 51,
+      "imageUrl": "/assets/images/products/backpack.svg",
+      "variants": [
+        {
+          "id": 301,
+          "sku": "EMBER-BAG-GRN",
+          "name": "Forest",
+          "options": "Green",
+          "price": 129,
+          "status": "Active",
+          "inventory": 124
+        }
+      ],
+      "createdAt": "2026-07-09T10:00:00Z",
+      "updatedAt": "2026-08-26T09:00:00Z"
+    },
+    {
+      "id": 4,
+      "sku": "LUMA-LAMP-01",
+      "title": "Luma Desk Light",
+      "shortDescription": "Adaptive task lighting for modern workspaces.",
+      "description": "Low-glare desk light with warm/cool modes and touch dimming.",
+      "categoryId": 4,
+      "collectionIds": [
+        2
+      ],
+      "brand": "Luma",
+      "tags": [
+        "home",
+        "workspace"
+      ],
+      "status": "Draft",
+      "basePrice": 89,
+      "compareAtPrice": 109,
+      "cost": 31,
+      "imageUrl": "/assets/images/products/lamp.svg",
+      "variants": [
+        {
+          "id": 401,
+          "sku": "LUMA-LAMP-SLV",
+          "name": "Silver",
+          "options": "Silver",
+          "price": 89,
+          "status": "Active",
+          "inventory": 28
+        }
+      ],
+      "createdAt": "2026-08-01T10:00:00Z",
+      "updatedAt": "2026-08-27T09:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Audio",
+      "parentId": null,
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Wearables",
+      "parentId": null,
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "name": "Bags & Travel",
+      "parentId": null,
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "name": "Workspace",
+      "parentId": null,
+      "status": "Active"
+    }
+  ],
+  "collections": [
+    {
+      "id": 1,
+      "name": "New & Notable",
+      "featured": true,
+      "productIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Work & Travel",
+      "featured": true,
+      "productIds": [
+        3,
+        4
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Maya Thompson",
+      "email": "maya.thompson@example.com",
+      "phone": "+1 555 201 8899",
+      "status": "Active",
+      "customerSince": "2024-04-18",
+      "lifetimeValue": 2140,
+      "totalOrders": 9,
+      "averageOrderValue": 238,
+      "lastOrderAt": "2026-08-27T08:10:00Z",
+      "addresses": [
+        {
+          "id": 1,
+          "label": "Home",
+          "line1": "221B Market Street",
+          "city": "Austin",
+          "state": "TX",
+          "postalCode": "78701",
+          "country": "USA"
+        }
+      ],
+      "notes": "VIP customer. Prefers express shipping."
+    },
+    {
+      "id": 2,
+      "name": "Ethan Walker",
+      "email": "ethan.walker@example.com",
+      "phone": "+1 555 440 6612",
+      "status": "Active",
+      "customerSince": "2025-01-10",
+      "lifetimeValue": 986,
+      "totalOrders": 5,
+      "averageOrderValue": 197,
+      "lastOrderAt": "2026-08-26T16:40:00Z",
+      "addresses": [
+        {
+          "id": 2,
+          "label": "Office",
+          "line1": "88 River Avenue",
+          "city": "Seattle",
+          "state": "WA",
+          "postalCode": "98101",
+          "country": "USA"
+        }
+      ],
+      "notes": "Frequent electronics buyer."
+    },
+    {
+      "id": 3,
+      "name": "Olivia Chen",
+      "email": "olivia.chen@example.com",
+      "phone": "+1 555 883 2219",
+      "status": "Active",
+      "customerSince": "2025-06-02",
+      "lifetimeValue": 1278,
+      "totalOrders": 7,
+      "averageOrderValue": 182,
+      "lastOrderAt": "2026-08-24T12:20:00Z",
+      "addresses": [
+        {
+          "id": 3,
+          "label": "Home",
+          "line1": "15 Pine Street",
+          "city": "San Francisco",
+          "state": "CA",
+          "postalCode": "94105",
+          "country": "USA"
+        }
+      ],
+      "notes": "Usually buys during promotions."
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "orderNumber": "CO-483102",
+      "customerId": 1,
+      "createdAt": "2026-08-27T08:10:00Z",
+      "updatedAt": "2026-08-27T08:10:00Z",
+      "status": "Draft",
+      "paymentStatus": "Pending",
+      "fulfillmentStatus": "Unfulfilled",
+      "shipmentStatus": "Pending",
+      "subtotal": 498,
+      "shippingFee": 15,
+      "discountTotal": 40,
+      "taxTotal": 0,
+      "grandTotal": 473,
+      "billingAddress": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221B Market Street",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "USA"
+      },
+      "shippingAddress": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221B Market Street",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "USA"
+      },
+      "lines": [
+        {
+          "id": 11,
+          "productId": 1,
+          "variantId": 101,
+          "sku": "AUR-HEAD-01",
+          "title": "Aurora Pro Headphones",
+          "imageUrl": "/assets/images/products/headphones.svg",
+          "quantity": 2,
+          "unitPrice": 249,
+          "discount": 0,
+          "fulfilledQuantity": 0,
+          "returnedQuantity": 0
+        }
+      ],
+      "internalNotes": "High-value returning customer.",
+      "customerNote": "Please leave at reception.",
+      "tags": [
+        "vip",
+        "express"
+      ]
+    },
+    {
+      "id": 2,
+      "orderNumber": "CO-483099",
+      "customerId": 2,
+      "createdAt": "2026-08-26T16:40:00Z",
+      "updatedAt": "2026-08-27T21:19:08.579Z",
+      "status": "Cancelled",
+      "paymentStatus": "Paid",
+      "fulfillmentStatus": "Picking",
+      "shipmentStatus": "Pending",
+      "subtotal": 329,
+      "shippingFee": 0,
+      "discountTotal": 0,
+      "taxTotal": 0,
+      "grandTotal": 329,
+      "billingAddress": {
+        "id": 2,
+        "label": "Office",
+        "line1": "88 River Avenue",
+        "city": "Seattle",
+        "state": "WA",
+        "postalCode": "98101",
+        "country": "USA"
+      },
+      "shippingAddress": {
+        "id": 2,
+        "label": "Office",
+        "line1": "88 River Avenue",
+        "city": "Seattle",
+        "state": "WA",
+        "postalCode": "98101",
+        "country": "USA"
+      },
+      "lines": [
+        {
+          "id": 21,
+          "productId": 2,
+          "variantId": 201,
+          "sku": "NOVA-WATCH-01",
+          "title": "Nova Health Watch",
+          "imageUrl": "/assets/images/products/watch.svg",
+          "quantity": 1,
+          "unitPrice": 329,
+          "discount": 0,
+          "fulfilledQuantity": 0,
+          "returnedQuantity": 0
+        }
+      ],
+      "internalNotes": "Standard handling.",
+      "customerNote": "",
+      "tags": [
+        "standard"
+      ]
+    },
+    {
+      "id": 3,
+      "orderNumber": "CO-482980",
+      "customerId": 3,
+      "createdAt": "2026-08-24T12:20:00Z",
+      "updatedAt": "2026-08-27T08:00:00Z",
+      "status": "Completed",
+      "paymentStatus": "Paid",
+      "fulfillmentStatus": "Fulfilled",
+      "shipmentStatus": "Delivered",
+      "subtotal": 258,
+      "shippingFee": 12,
+      "discountTotal": 25,
+      "taxTotal": 0,
+      "grandTotal": 245,
+      "billingAddress": {
+        "id": 3,
+        "label": "Home",
+        "line1": "15 Pine Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94105",
+        "country": "USA"
+      },
+      "shippingAddress": {
+        "id": 3,
+        "label": "Home",
+        "line1": "15 Pine Street",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94105",
+        "country": "USA"
+      },
+      "lines": [
+        {
+          "id": 31,
+          "productId": 3,
+          "variantId": 301,
+          "sku": "EMBER-BAG-01",
+          "title": "Ember Transit Backpack",
+          "imageUrl": "/assets/images/products/backpack.svg",
+          "quantity": 2,
+          "unitPrice": 129,
+          "discount": 0,
+          "fulfilledQuantity": 2,
+          "returnedQuantity": 0
+        }
+      ],
+      "internalNotes": "Promotion order.",
+      "customerNote": "",
+      "tags": [
+        "promo"
+      ]
+    },
+    {
+      "customerId": 1,
+      "updatedAt": "2026-08-27T21:16:43.912Z",
+      "subtotal": 249,
+      "shippingFee": 8,
+      "discountTotal": 0,
+      "taxTotal": 0,
+      "grandTotal": 257,
+      "billingAddress": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221B Market Street",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "USA"
+      },
+      "shippingAddress": {
+        "id": 1,
+        "label": "Home",
+        "line1": "221B Market Street",
+        "city": "Austin",
+        "state": "TX",
+        "postalCode": "78701",
+        "country": "USA"
+      },
+      "lines": [
+        {
+          "id": 1787865400579,
+          "productId": 1,
+          "variantId": 101,
+          "sku": "AUR-HEAD-01",
+          "title": "Aurora Pro Headphones",
+          "imageUrl": "/assets/images/products/headphones.svg",
+          "quantity": 1,
+          "unitPrice": 249,
+          "discount": 0,
+          "fulfilledQuantity": 0,
+          "returnedQuantity": 0
+        }
+      ],
+      "internalNotes": "",
+      "orderNumber": "CO-400579",
+      "createdAt": "2026-08-27T21:16:40.579Z",
+      "status": "Draft",
+      "paymentStatus": "Paid",
+      "fulfillmentStatus": "Unfulfilled",
+      "shipmentStatus": "Pending",
+      "customerNote": "",
+      "tags": [
+        "manual"
+      ],
+      "id": 4
+    }
+  ],
+  "fulfillments": [
+    {
+      "id": 1,
+      "orderId": 2,
+      "status": "Picking",
+      "warehouse": "Main Fulfillment Center",
+      "pickedAt": "2026-08-27T21:19:03.772Z",
+      "packageCount": 1,
+      "notes": "Priority aisle",
+      "createdAt": "2026-08-27T07:20:00Z"
+    },
+    {
+      "id": 2,
+      "orderId": 3,
+      "status": "Fulfilled",
+      "warehouse": "West Coast FC",
+      "pickedAt": "2026-08-25T09:00:00Z",
+      "packedAt": "2026-08-25T09:30:00Z",
+      "packageCount": 1,
+      "notes": "",
+      "createdAt": "2026-08-25T08:30:00Z"
+    }
+  ],
+  "shipments": [
+    {
+      "id": 1,
+      "orderId": 3,
+      "fulfillmentId": 2,
+      "carrier": "DHL Express",
+      "serviceLevel": "Express",
+      "trackingNumber": "DHL83910442",
+      "status": "Delivered",
+      "shipDate": "2026-08-25T10:00:00Z",
+      "estimatedDelivery": "2026-08-27T18:00:00Z",
+      "deliveredDate": "2026-08-27T08:00:00Z"
+    }
+  ],
+  "returns": [],
+  "refunds": [],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "SUMMER20",
+      "description": "20% campaign discount",
+      "type": "Percentage",
+      "value": 20,
+      "minimumOrderValue": 100,
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-31",
+      "usageLimit": 500,
+      "usedCount": 184,
+      "active": true
+    },
+    {
+      "id": 2,
+      "code": "WELCOME25",
+      "description": "New customer fixed discount",
+      "type": "Fixed",
+      "value": 25,
+      "minimumOrderValue": 150,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "usageLimit": 1000,
+      "usedCount": 431,
+      "active": true
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "name": "Back to Work",
+      "description": "Workspace and travel products",
+      "startDate": "2026-08-15",
+      "endDate": "2026-09-15",
+      "active": true,
+      "categoryIds": [
+        3,
+        4
+      ],
+      "productIds": [
+        3,
+        4
+      ],
+      "revenue": 18420
+    },
+    {
+      "id": 2,
+      "name": "Audio Week",
+      "description": "Selected audio products",
+      "startDate": "2026-08-20",
+      "endDate": "2026-08-29",
+      "active": true,
+      "categoryIds": [
+        1
+      ],
+      "productIds": [
+        1
+      ],
+      "revenue": 12680
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "productId": 1,
+      "customerId": 2,
+      "rating": 5,
+      "text": "Excellent sound and very comfortable for long sessions.",
+      "submittedAt": "2026-08-26T11:00:00Z",
+      "status": "Published"
+    },
+    {
+      "id": 2,
+      "productId": 3,
+      "customerId": 3,
+      "rating": 4,
+      "text": "Great organization and the material feels premium.",
+      "submittedAt": "2026-08-25T10:00:00Z",
+      "status": "Published"
+    },
+    {
+      "id": 3,
+      "productId": 2,
+      "customerId": 1,
+      "rating": 2,
+      "text": "Battery was lower than expected on my first week.",
+      "submittedAt": "2026-08-24T09:00:00Z",
+      "status": "Flagged"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "order",
+      "title": "High-value order",
+      "message": "CO-483102 is awaiting confirmation.",
+      "read": true,
+      "createdAt": "2026-08-27T08:12:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "fulfillment",
+      "title": "Fulfillment SLA risk",
+      "message": "CO-483099 has been in picking for 55 minutes.",
+      "read": true,
+      "createdAt": "2026-08-27T08:25:00Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "type": "review",
+      "title": "Review needs moderation",
+      "message": "A 2-star review has been flagged for attention.",
+      "read": true,
+      "createdAt": "2026-08-27T08:30:00Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "type": "Order",
+      "message": "Order created",
+      "createdAt": "2026-08-27T08:10:00Z"
+    },
+    {
+      "id": 2,
+      "orderId": 2,
+      "type": "Order",
+      "message": "Order confirmed",
+      "createdAt": "2026-08-26T17:00:00Z"
+    },
+    {
+      "id": 3,
+      "orderId": 2,
+      "type": "Payment",
+      "message": "Payment marked as Paid",
+      "createdAt": "2026-08-26T17:05:00Z"
+    },
+    {
+      "id": 4,
+      "orderId": 2,
+      "type": "Fulfillment",
+      "message": "Fulfillment started",
+      "createdAt": "2026-08-27T07:30:00Z"
+    },
+    {
+      "id": 5,
+      "orderId": 3,
+      "type": "Order",
+      "message": "Order created",
+      "createdAt": "2026-08-24T12:20:00Z"
+    },
+    {
+      "id": 6,
+      "orderId": 3,
+      "type": "Shipment",
+      "message": "Shipment dispatched",
+      "createdAt": "2026-08-25T10:00:00Z"
+    },
+    {
+      "id": 7,
+      "orderId": 3,
+      "type": "Delivery",
+      "message": "Order delivered",
+      "createdAt": "2026-08-27T08:00:00Z"
+    },
+    {
+      "orderId": 4,
+      "type": "Order",
+      "message": "Payment marked as Paid",
+      "createdAt": "2026-08-27T21:16:43.957Z",
+      "id": 8
+    },
+    {
+      "orderId": 2,
+      "type": "Order",
+      "message": "Fulfillment started",
+      "createdAt": "2026-08-27T21:19:03.033Z",
+      "id": 9
+    },
+    {
+      "orderId": 2,
+      "type": "Order",
+      "message": "Fulfillment started",
+      "createdAt": "2026-08-27T21:19:03.826Z",
+      "id": 10
+    },
+    {
+      "orderId": 2,
+      "type": "Order",
+      "message": "Order cancelled",
+      "createdAt": "2026-08-27T21:19:08.622Z",
+      "id": 11
+    }
+  ],
+  "storeSettings": [
+    {
+      "id": 1,
+      "storeName": "CWJ Commerce Studio",
+      "currency": "USD",
+      "orderPrefix": "CO",
+      "shippingMethods": [
+        "Standard",
+        "Express",
+        "Priority"
+      ],
+      "theme": "dark",
+      "notificationsEnabled": true
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": 1,
+      "event": "Order CO-482980 delivered",
+      "createdAt": "2026-08-27T08:00:00Z"
+    }
+  ]
+}

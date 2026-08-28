@@ -1,0 +1,79 @@
+<app-page-header eyebrow="Orders" title="Order operations" description="Search, triage and move customer orders through payment, fulfillment and delivery.">
+  <a routerLink="new" class="btn accent">
+    <i class="fa-solid fa-plus">
+    </i>
+    Manual order
+  </a>
+</app-page-header>
+<div class="order-toolbar card compact-card">
+  <div class="search-field">
+    <i class="fa-solid fa-magnifying-glass">
+    </i>
+    <input placeholder="Search order number" [value]="search()" (input)="updateSearch($event)" />
+  </div>
+  <div class="status-tabs">
+    @for(s of ['All','Draft','Confirmed','Processing','Completed','Cancelled'];track s){
+      <button [class.active]="status()===s" (click)="status.set(s)">
+        {{s}}
+      </button>
+    }
+  </div>
+</div>
+<div class="card data-grid">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Order
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Total
+        </th>
+        <th>
+          Payment
+        </th>
+        <th>
+          Fulfillment
+        </th>
+        <th>
+          Shipment
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(order of filtered();track order.id){
+        <tr [routerLink]="[order.id]">
+          <td>
+            <b>
+              {{order.orderNumber}}
+            </b>
+            <small>
+              {{order.lines.length}}
+              items
+            </small>
+          </td>
+          <td>
+            {{order.createdAt|date:'mediumDate'}}
+          </td>
+          <td>
+            <b>
+              {{order.grandTotal|currency:'USD'}}
+            </b>
+          </td>
+          <td>
+            <app-status-chip [status]="order.paymentStatus" />
+          </td>
+          <td>
+            <app-status-chip [status]="order.fulfillmentStatus" />
+          </td>
+          <td>
+            <app-status-chip [status]="order.shipmentStatus" />
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

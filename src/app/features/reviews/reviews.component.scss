@@ -1,0 +1,29 @@
+.review-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px
+}
+.review-top {
+  display:flex;
+  justify-content:space-between
+}
+.stars {
+  color:#f59e0b
+}
+.card p {
+  min-height:70px;
+  line-height:1.6
+}
+.card>small {
+  color:var(--muted)
+}
+.review-actions {
+  display:flex;
+  gap:8px;
+  margin-top:14px
+}
+@media(max-width:900px) {
+  .review-grid {
+    grid-template-columns:1fr
+  }
+}

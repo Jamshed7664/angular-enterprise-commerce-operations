@@ -1,0 +1,36 @@
+<app-page-header eyebrow="Fulfillment" title="Fulfillment queue" description="Pick, pack and prepare paid orders for shipment." />
+<div class="ops-cards">
+  @for(f of items();track f.id){
+    <article class="card">
+      <div class="op-head">
+        <div>
+          <small>
+            ORDER #
+            {{f.orderId}}
+          </small>
+          <h3>
+            {{f.warehouse}}
+          </h3>
+        </div>
+        <app-status-chip [status]="f.status" />
+      </div>
+      <div class="op-meta">
+        <span>
+          Packages
+          <b>
+            {{f.packageCount}}
+          </b>
+        </span>
+        <span>
+          Created
+          <b>
+            {{f.createdAt|date:'shortDate'}}
+          </b>
+        </span>
+      </div>
+      <a [routerLink]="['/orders',f.orderId]" class="btn secondary full">
+        Open order workspace
+      </a>
+    </article>
+  }
+</div>

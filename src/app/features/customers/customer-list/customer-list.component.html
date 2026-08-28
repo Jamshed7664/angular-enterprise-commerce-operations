@@ -1,0 +1,63 @@
+<app-page-header eyebrow="Customer 360" title="Customers" description="Lifetime value, order behavior, returns and support context in one place." />
+<div class="card data-grid">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Customer
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Lifetime value
+        </th>
+        <th>
+          Orders
+        </th>
+        <th>
+          AOV
+        </th>
+        <th>
+          Last order
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(c of customers();track c.id){
+        <tr [routerLink]="[c.id]">
+          <td>
+            <div class="customer">
+              <span>
+                {{initials(c.name)}}
+              </span>
+              <div>
+                <b>
+                  {{c.name}}
+                </b>
+                <small>
+                  {{c.email}}
+                </small>
+              </div>
+            </div>
+          </td>
+          <td>
+            <app-status-chip [status]="c.status" />
+          </td>
+          <td>
+            {{c.lifetimeValue|currency:'USD'}}
+          </td>
+          <td>
+            {{c.totalOrders}}
+          </td>
+          <td>
+            {{c.averageOrderValue|currency:'USD'}}
+          </td>
+          <td>
+            {{c.lastOrderAt|date:'mediumDate'}}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

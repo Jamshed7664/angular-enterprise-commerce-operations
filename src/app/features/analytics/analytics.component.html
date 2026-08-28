@@ -1,0 +1,71 @@
+<app-page-header eyebrow="Analytics" title="Commerce performance" description="GMV, AOV, order mix and fulfillment-focused operational reporting."/>
+<div class="metric-grid">
+  <article class="metric">
+    <small>
+      GMV
+    </small>
+    <b>
+      {{snapshot().gmv|currency:'USD':'symbol':'1.0-0'}}
+    </b>
+  </article>
+  <article class="metric">
+    <small>
+      NET SALES
+    </small>
+    <b>
+      {{snapshot().netSales|currency:'USD':'symbol':'1.0-0'}}
+    </b>
+  </article>
+  <article class="metric">
+    <small>
+      AOV
+    </small>
+    <b>
+      {{snapshot().aov|currency:'USD':'symbol':'1.0-0'}}
+    </b>
+  </article>
+  <article class="metric">
+    <small>
+      RETURN RATE
+    </small>
+    <b>
+      {{snapshot().returnRate|number:'1.1-1'}}
+      %
+    </b>
+  </article>
+</div>
+<div class="analytics-grid">
+  <section class="card">
+    <h3>
+      Orders by status
+    </h3>
+    @for(row of statusRows();track row.status){
+      <div class="bar-row">
+        <span>
+          {{row.status}}
+        </span>
+        <div class="bar">
+          <i [style.width.%]="row.percent">
+          </i>
+        </div>
+        <b>
+          {{row.count}}
+        </b>
+      </div>
+    }
+  </section>
+  <section class="card">
+    <h3>
+      Revenue pulse
+    </h3>
+    <div class="fake-chart">
+      @for(v of [35,58,42,76,64,88,73,94,82,100];track $index){
+        <span [style.height.%]="v">
+        </span>
+      }
+    </div>
+    <small>
+      Demo visualization backed by live JSON Server totals.
+    </small>
+  </section>
+</div>

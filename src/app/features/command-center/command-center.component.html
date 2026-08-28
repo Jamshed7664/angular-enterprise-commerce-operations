@@ -1,0 +1,136 @@
+<app-page-header eyebrow="Commerce Command Center" title="Operations at a glance" description="Revenue, order health and fulfillment risk across the store.">
+  <a routerLink="/orders/new" class="btn accent">
+    <i class="fa-solid fa-plus">
+    </i>
+    Create order
+  </a>
+</app-page-header>
+<section class="hero-metrics">
+  <article class="gmv-tile">
+    <small>
+      GROSS MERCHANDISE VALUE
+    </small>
+    <strong>
+      {{snapshot().gmv | currency:'USD':'symbol':'1.0-0'}}
+    </strong>
+    <span>
+      <i class="fa-solid fa-arrow-trend-up">
+      </i>
+      Commerce volume
+    </span>
+  </article>
+  <div class="metric-stack">
+    <article>
+      <small>
+        NET SALES
+      </small>
+      <b>
+        {{snapshot().netSales | currency:'USD':'symbol':'1.0-0'}}
+      </b>
+    </article>
+    <article>
+      <small>
+        AVERAGE ORDER
+      </small>
+      <b>
+        {{snapshot().aov | currency:'USD':'symbol':'1.0-0'}}
+      </b>
+    </article>
+    <article>
+      <small>
+        RETURN RATE
+      </small>
+      <b>
+        {{snapshot().returnRate | number:'1.1-1'}}
+        %
+      </b>
+    </article>
+  </div>
+  <article class="ops-spotlight">
+    <span class="eyebrow">
+      OPERATIONS QUEUE
+    </span>
+    <h2>
+      Move orders before SLA risk becomes customer pain.
+    </h2>
+    <div class="ops-grid">
+      <div>
+        <b>
+          3
+        </b>
+        <small>
+          Picking
+        </small>
+      </div>
+      <div>
+        <b>
+          2
+        </b>
+        <small>
+          Late
+        </small>
+      </div>
+      <div>
+        <b>
+          4
+        </b>
+        <small>
+          Returns
+        </small>
+      </div>
+    </div>
+  </article>
+</section>
+<section class="command-grid">
+  <article class="card orders-card">
+    <div class="section-head">
+      <div>
+        <small>
+          RECENT ORDERS
+        </small>
+        <h3>
+          High-value activity
+        </h3>
+      </div>
+      <a routerLink="/orders">
+        View all
+      </a>
+    </div>
+    <div class="order-list">
+      @for (order of orders(); track order.id) {
+        <a [routerLink]="['/orders', order.id]" class="order-row">
+          <div>
+            <b>
+              {{order.orderNumber}}
+            </b>
+            <small>
+              {{order.createdAt | date:'medium'}}
+            </small>
+          </div>
+          <div class="amount">
+            {{order.grandTotal | currency:'USD':'symbol':'1.0-0'}}
+          </div>
+          <app-status-chip [status]="order.paymentStatus" />
+          <app-status-chip [status]="order.fulfillmentStatus" />
+        </a>
+      }
+    </div>
+  </article>
+  <article class="card alert-card">
+    <small>
+      FULFILLMENT SLA
+    </small>
+    <div class="sla-ring">
+      91%
+    </div>
+    <h3>
+      On-time fulfillment
+    </h3>
+    <p>
+      Two orders need action within the next hour.
+    </p>
+    <a routerLink="/fulfillment">
+      Open fulfillment queue →
+    </a>
+  </article>
+</section>

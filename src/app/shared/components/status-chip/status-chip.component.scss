@@ -1,0 +1,28 @@
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+[data-status='Paid'], [data-status='Fulfilled'], [data-status='Delivered'], [data-status='Processed'], [data-status='Active'], [data-status='Published'] {
+  background: rgba(132, 204, 22, 0.14);
+  color: #65a30d;
+  border-color: rgba(132, 204, 22, 0.32);
+}
+[data-status='Pending'], [data-status='Picking'], [data-status='Packed'], [data-status='Requested'], [data-status='Approved'] {
+  background: rgba(219, 39, 119, 0.11);
+  color: #db2777;
+  border-color: rgba(219, 39, 119, 0.25);
+}
+[data-status='Cancelled'], [data-status='Failed'], [data-status='Rejected'], [data-status='Hidden'], [data-status='Flagged'] {
+  background: rgba(239, 68, 68, 0.11);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.25);
+}

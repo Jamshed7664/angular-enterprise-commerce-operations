@@ -1,0 +1,74 @@
+<app-page-header eyebrow="Orders" [title]="existingOrder() ? 'Edit draft order' : 'Create manual order'" description="Build a draft order using catalog and Customer 360 data." />
+<form class="order-form" [formGroup]="form" (ngSubmit)="save()">
+  <section class="card">
+    <h3>
+      Customer & lines
+    </h3>
+    <label>
+      Customer
+      <select formControlName="customerId">
+        @for(c of customers();track c.id){
+          <option [value]="c.id">
+            {{c.name}}
+            —
+            {{c.email}}
+          </option>
+        }
+      </select>
+    </label>
+    <div class="section-title">
+      <h3>
+        Line items
+      </h3>
+      <button class="btn secondary" type="button" (click)="addLine()">
+        + Add line
+      </button>
+    </div>
+    <div formArrayName="lines" class="line-editor">
+      @for(line of lines.controls;track $index){
+        <div class="line-row" [formGroupName]="$index">
+          <select formControlName="productId">
+            @for(p of products();track p.id){
+              <option [value]="p.id">
+                {{p.sku}}
+                ·
+                {{p.title}}
+                ·
+                {{p.basePrice|currency:'USD'}}
+              </option>
+            }
+          </select>
+          <input formControlName="quantity" type="number" min="1" />
+          <button class="icon-btn danger" type="button" (click)="removeLine($index)">
+            <i class="fa-solid fa-trash">
+            </i>
+          </button>
+        </div>
+      }
+    </div>
+  </section>
+  <aside class="card summary">
+    <h3>
+      Order summary
+    </h3>
+    <label>
+      Shipping fee
+      <input type="number" formControlName="shippingFee" />
+    </label>
+    <label>
+      Discount
+      <input type="number" formControlName="discountTotal" />
+    </label>
+    <label>
+      Internal notes
+      <textarea rows="5" formControlName="internalNotes">
+      </textarea>
+    </label>
+    <button class="btn accent full" [disabled]="form.invalid">
+      {{ existingOrder() ? 'Save draft order' : 'Create draft order' }}
+    </button>
+    <a routerLink="/orders" class="btn ghost full">
+      Cancel
+    </a>
+  </aside>
+</form>

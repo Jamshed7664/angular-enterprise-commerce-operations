@@ -1,0 +1,34 @@
+.notification-page {
+  display:grid;
+  gap:8px
+}
+.notification {
+  width:100%;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:12px;
+  align-items:center;
+  text-align:left;
+  color:var(--text);
+  cursor:pointer
+}
+.notification.unread {
+  border-color:rgba(219,39,119,.35);
+  background:color-mix(in srgb,var(--surface) 94%,var(--accent) 6%)
+}
+.type-icon {
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:rgba(219,39,119,.12);
+  color:var(--accent)
+}
+.notification>span:nth-child(2) {
+  display:flex;
+  flex-direction:column
+}
+.notification small,.notification time {
+  color:var(--muted)
+}

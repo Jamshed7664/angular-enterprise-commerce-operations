@@ -1,0 +1,58 @@
+<main class="auth-page">
+  <section class="auth-visual">
+    <span class="brand">
+      CWJ Commerce OS
+    </span>
+    <div>
+      <p class="eyebrow">
+        OPERATIONS COMMAND CENTER
+      </p>
+      <h1>
+        Run catalog, orders, fulfillment and returns from one console.
+      </h1>
+      <p>
+        Built with Angular 20 + JSON Server for a realistic enterprise portfolio workflow.
+      </p>
+    </div>
+  </section>
+  <section class="auth-card">
+    <div class="auth-inner">
+      <div class="logo-mark">
+        CO
+      </div>
+      <h2>
+        Welcome back
+      </h2>
+      <p>
+        Use the demo credentials or any valid email and 6+ character password.
+      </p>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <label>
+          Email
+        </label>
+        <input formControlName="email" type="email" />
+        <label>
+          Password
+        </label>
+        <input formControlName="password" type="password" />
+        @if (error) {
+          <div class="error">
+            {{error}}
+          </div>
+        }
+        <button class="btn primary full" type="submit">
+          Sign in
+        </button>
+      </form>
+      <a routerLink="/auth/forgot-password">
+        Forgot password?
+      </a>
+      <div class="demo">
+        <b>
+          Demo:
+        </b>
+        admin@commerce.dev / password
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,35 @@
+<app-page-header eyebrow="Reviews" title="Review moderation" description="Publish, hide or flag customer product feedback."/>
+<div class="review-grid">
+  @for(r of reviews();track r.id){
+    <article class="card">
+      <div class="review-top">
+        <div class="stars">
+          @for(star of [1,2,3,4,5];track star){
+            <i [class]="star<=r.rating?'fa-solid fa-star':'fa-regular fa-star'">
+            </i>
+          }
+        </div>
+        <app-status-chip [status]="r.status"/>
+      </div>
+      <p>
+        “
+        {{r.text}}
+        ”
+      </p>
+      <small>
+        Product #
+        {{r.productId}}
+        · Customer #
+        {{r.customerId}}
+      </small>
+      <div class="review-actions">
+        <button class="btn success" (click)="setStatus(r,'Published')">
+          Publish
+        </button>
+        <button class="btn ghost" (click)="setStatus(r,'Hidden')">
+          Hide
+        </button>
+      </div>
+    </article>
+  }
+</div>
